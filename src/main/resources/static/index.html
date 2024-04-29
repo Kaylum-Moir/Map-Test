@@ -31,7 +31,19 @@
     function onMapClick(e) {
         // Create a new marker at clicked location
         marker = L.marker(e.latlng).addTo(map);
-        marker.bindPopup("You clicked the map at " + e.latlng.toString()).openPopup();
+        marker.bindPopup("<form action='/newPin', method='post'>\n" +
+            "<div class=\"input-container\">\n" +
+            "          <input type=\"text\" id=\"locName\" name=\"locName\" placeholder=\"Location Name\" />\n" +
+            "</div>\n" +
+            "<div class=\"input-container\">\n" +
+            "          <input type=\"text\" id=\"openTimes\" name=\"openTimes\" placeholder=\"Opening Times\" />\n" +
+            "</div>\n" +
+            "<div class=\"input-container\">\n" +
+            "          <input type=\"submit\" value=\"Submit\" />\n" +
+            "</div>\n" +
+            "</form>").openPopup();
+
+        // e.latlng.toString()
     }
 
     // Add click event listener to the map

@@ -9,7 +9,6 @@
         #map { height: 400px; }
     </style>
 </head>
-
 <body>
 <h1>OpenStreetMap Integration</h1>
 <div id="map"></div>
@@ -27,6 +26,16 @@
     // Add a marker to the map
     var marker = L.marker([51.5, -0.09]).addTo(map);
     marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+    // Function to handle map click event
+    function onMapClick(e) {
+        // Create a new marker at clicked location
+        marker = L.marker(e.latlng).addTo(map);
+        marker.bindPopup("You clicked the map at " + e.latlng.toString()).openPopup();
+    }
+
+    // Add click event listener to the map
+    map.on('click', onMapClick);
 </script>
 </body>
 </html>
